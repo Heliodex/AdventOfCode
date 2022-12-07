@@ -16,23 +16,23 @@ func main() {
 	fileScanner := bufio.NewScanner(file)
 	fileScanner.Split(bufio.ScanLines)
 
-	table := map[string]int{
-		"X": 1,
-		"Y": 2,
-		"Z": 3,
+	table := map[rune]int{
+		'X': 1,
+		'Y': 2,
+		'Z': 3,
 	}
-	beats := map[string]string{
-		"B": "X",
-		"C": "Y",
-		"A": "Z",
-		"X": "C",
-		"Y": "A",
-		"Z": "B",
+	beats := map[rune]rune{
+		'B': 'X',
+		'C': 'Y',
+		'A': 'Z',
+		'X': 'C',
+		'Y': 'A',
+		'Z': 'B',
 	}
-	ldw := map[string][3]string{ // whether to lose, draw, or win
-		"A": {"Z", "X", "Y"}, // [0]: lose, [1]: draw, [2]: win
-		"B": {"X", "Y", "Z"},
-		"C": {"Y", "Z", "X"},
+	ldw := map[rune][3]rune{ // whether to lose, draw, or win
+		'A': {'Z', 'X', 'Y'}, // [0]: lose, [1]: draw, [2]: win
+			'B': {'X', 'Y', 'Z'},
+		'C': {'Y', 'Z', 'X'},
 	}
 
 	points := 0
@@ -40,8 +40,8 @@ func main() {
 	for fileScanner.Scan() {
 		arr := strings.Split(fileScanner.Text(), " ")
 
-		oppChoice := arr[0]
-		ourChoice := ldw[oppChoice][table[arr[1]] - 1]
+		oppChoice := rune(arr[0][0])
+		ourChoice := ldw[oppChoice][table[rune(arr[1][0])] - 1]
 		points += table[ourChoice]
 		
 		if oppChoice == beats[ourChoice] {

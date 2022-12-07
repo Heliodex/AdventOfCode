@@ -16,26 +16,26 @@ func main() {
 	fileScanner := bufio.NewScanner(file)
 	fileScanner.Split(bufio.ScanLines)
 
-	table := map[string]int{
-		"X": 1,
-		"Y": 2,
-		"Z": 3,
+	table := map[rune]int{
+		'X': 1,
+		'Y': 2,
+		'Z': 3,
 	}
-	beats := map[string]string{
-		"B": "X",
-		"C": "Y",
-		"A": "Z",
-		"X": "C",
-		"Y": "A",
-		"Z": "B",
+	beats := map[rune]rune{
+		'B': 'X',
+		'C': 'Y',
+		'A': 'Z',
+		'X': 'C',
+		'Y': 'A',
+		'Z': 'B',
 	}
 
 	points := 0
 
 	for fileScanner.Scan() {
 		arr := strings.Split(fileScanner.Text(), " ")
-		oppChoice := arr[0]
-		ourChoice := arr[1]
+		oppChoice := rune(arr[0][0])
+		ourChoice := rune(arr[1][0])
 		points += table[ourChoice]
 		if beats[ourChoice] == oppChoice {
 			points += 6
