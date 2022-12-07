@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("../Inputs/1")
+	file, err := os.Open("../../Inputs/1")
 	if err != nil {
 		fmt.Println("[error]:", err)
 	}
