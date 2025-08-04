@@ -1,5 +1,17 @@
--module('1-1').
+-module('1-2').
 -export([start/0]).
+
+count(Value, List) ->
+    lists:foldl(
+        fun(X, Acc) ->
+            if
+                X == Value -> Acc + 1;
+                true -> Acc
+            end
+        end,
+        0,
+        List
+    ).
 
 process_data(Content) ->
     Nums = [
@@ -11,8 +23,8 @@ process_data(Content) ->
     Bnums = lists:sort(lists:map(fun({_, B}) -> B end, Nums)),
     lists:sum(
         lists:map(
-            fun({A, B}) -> abs(A - B) end,
-            lists:zip(Anums, Bnums)
+            fun(X) -> X * count(X, Bnums) end,
+            Anums
         )
     ).
 
