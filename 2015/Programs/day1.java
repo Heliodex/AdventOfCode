@@ -9,7 +9,7 @@ public class day1 {
 
 	int part1(String input) {
 		var floor = 0;
-		for (char c : input.toCharArray())
+		for (final char c : input.toCharArray())
 			floor += switch (c) {
 				case '(' -> 1;
 				case ')' -> -1;
@@ -34,7 +34,7 @@ public class day1 {
 	}
 
 	void main() throws IOException {
-		var content = Files.readString(new File(path).toPath());
+		final var content = Files.readString(new File(path).toPath());
 		IO.println(part1(content));
 		IO.println(part2(content));
 	}

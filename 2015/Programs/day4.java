@@ -11,7 +11,7 @@ public class day4 {
 	final String path = "./Inputs/4";
 
 	int find(String input, int zeros) throws NoSuchAlgorithmException {
-		var md = MessageDigest.getInstance("MD5");
+		final var md = MessageDigest.getInstance("MD5");
 		for (var num = 0;; num++) {
 			md.update((input + num).getBytes());
 
@@ -21,7 +21,7 @@ public class day4 {
 	}
 
 	void main() throws IOException, NoSuchAlgorithmException {
-		var content = Files.readString(new File(path).toPath());
+		final var content = Files.readString(new File(path).toPath());
 		IO.println(find(content, 5));
 		IO.println(find(content, 6));
 	}

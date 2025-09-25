@@ -38,11 +38,11 @@ public class day3 {
 	final String path = "./Inputs/3";
 
 	int part1(String input) {
-		var chars = input.toCharArray();
-		var pos1 = new pos(0, 0);
-		var set = new HashSet<String>();
+		final var chars = input.toCharArray();
+		final var pos1 = new pos(0, 0);
+		final var set = new HashSet<String>();
 
-		for (var c : chars) {
+		for (final var c : chars) {
 			pos1.move(c);
 			set.add(pos1.toString());
 		}
@@ -50,9 +50,9 @@ public class day3 {
 	}
 
 	int part2(String input) {
-		var chars = input.toCharArray();
-		var poss = new pos[] { new pos(0, 0), new pos(0, 0) };
-		var set = new HashSet<String>();
+		final var chars = input.toCharArray();
+		final var poss = new pos[] { new pos(0, 0), new pos(0, 0) };
+		final var set = new HashSet<String>();
 
 		for (int i = 0; i < chars.length; i++) {
 			var c = chars[i];
@@ -63,7 +63,7 @@ public class day3 {
 	}
 
 	void main() throws IOException {
-		var content = Files.readString(new File(path).toPath());
+		final var content = Files.readString(new File(path).toPath());
 		IO.println(part1(content));
 		IO.println(part2(content));
 	}

@@ -9,14 +9,14 @@ public class day2 {
 	final String path = "./Inputs/2";
 
 	int part1(String input) {
-		var lines = input.split("\n");
+		final var lines = input.split("\n");
 		var total = 0;
 		for (var line : lines) {
-			var sides = line.split("x");
-			var l = Integer.parseInt(sides[0]);
-			var w = Integer.parseInt(sides[1]);
-			var h = Integer.parseInt(sides[2]);
-			var sidenums = List.of(l * w, w * h, h * l);
+			final var sides = line.split("x");
+			final var l = Integer.parseInt(sides[0]);
+			final var w = Integer.parseInt(sides[1]);
+			final var h = Integer.parseInt(sides[2]);
+			final var sidenums = List.of(l * w, w * h, h * l);
 
 			total += sidenums.stream().min(Integer::compare).orElse(0);
 			total += sidenums.stream().mapToInt(i -> i).sum() * 2;
@@ -25,14 +25,14 @@ public class day2 {
 	}
 
 	int part2(String input) {
-		var lines = input.split("\n");
+		final var lines = input.split("\n");
 		var total = 0;
 		for (var line : lines) {
-			var sides = line.split("x");
-			var l = Integer.parseInt(sides[0]);
-			var w = Integer.parseInt(sides[1]);
-			var h = Integer.parseInt(sides[2]);
-			var perimiters = List.of(l + w, w + h, h + l);
+			final var sides = line.split("x");
+			final var l = Integer.parseInt(sides[0]);
+			final var w = Integer.parseInt(sides[1]);
+			final var h = Integer.parseInt(sides[2]);
+			final var perimiters = List.of(l + w, w + h, h + l);
 
 			total += l * w * h;
 			total += perimiters.stream().min(Integer::compare).orElse(0) * 2;
@@ -41,7 +41,7 @@ public class day2 {
 	}
 
 	void main() throws IOException {
-		var content = Files.readString(new File(path).toPath());
+		final var content = Files.readString(new File(path).toPath());
 		IO.println(part1(content));
 		IO.println(part2(content));
 	}
