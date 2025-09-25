@@ -1,0 +1,70 @@
+package Programs;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.HashSet;
+
+class pos {
+	int x = 0;
+	int y = 0;
+
+	pos(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	pos move(char c) {
+		return switch (c) {
+			case '^' -> new pos(x, ++y);
+			case 'v' -> new pos(x, --y);
+			case '>' -> new pos(++x, y);
+			case '<' -> new pos(--x, y);
+			default -> new pos(0, 0);
+		};
+	}
+
+	pos inverted() {
+		return new pos(-x, -y);
+	}
+
+	@Override
+	public String toString() {
+		return x + "," + y;
+	}
+}
+
+public class day3 {
+	final String path = "./Inputs/3";
+
+	int part1(String input) {
+		var chars = input.toCharArray();
+		var pos1 = new pos(0, 0);
+		var set = new HashSet<String>();
+
+		for (var c : chars) {
+			pos1.move(c);
+			set.add(pos1.toString());
+		}
+		return set.size();
+	}
+
+	int part2(String input) {
+		var chars = input.toCharArray();
+		var poss = new pos[] { new pos(0, 0), new pos(0, 0) };
+		var set = new HashSet<String>();
+
+		for (int i = 0; i < chars.length; i++) {
+			var c = chars[i];
+			set.add(poss[i % 2].move(c).toString());
+		}
+
+		return set.size();
+	}
+
+	void main() throws IOException {
+		var content = Files.readString(new File(path).toPath());
+		IO.println(part1(content));
+		IO.println(part2(content));
+	}
+}
