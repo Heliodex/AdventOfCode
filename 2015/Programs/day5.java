@@ -3,42 +3,71 @@ package Programs;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class day5 {
 
 	final String path = "./Inputs/5";
 
-	int part1(String input) {
-		final var lines = input.split("\n");
-		var total = 0;
-
+	boolean isNice1(String line) {
 		final String[] forbidden = { "ab", "cd", "pq", "xy" };
 		final var vowels = "aeiou";
 
-		outer: for (final var line : lines) {
-			if (line.chars().filter(c -> vowels.indexOf(c) >= 0).count() < 3)
-				continue;
+		if (line.chars().filter(c -> vowels.indexOf(c) >= 0).count() < 3)
+			return false;
 
-			var hasDouble = false;
-			for (int i = 1; i < line.length(); i++)
-				if (line.charAt(i) == line.charAt(i - 1)) {
-					hasDouble = true;
-					break;
-				}
-			if (!hasDouble)
-				continue;
+		var hasDouble = false;
+		for (var i = 1; i < line.length(); i++)
+			if (line.charAt(i) == line.charAt(i - 1)) {
+				hasDouble = true;
+				break;
+			}
+		if (!hasDouble)
+			return false;
 
-			for (var f : forbidden)
-				if (line.contains(f))
-					continue outer;
+		for (var f : forbidden)
+			if (line.contains(f))
+				return false;
 
-			total++;
-		}
-		return total;
+		return true;
 	}
 
-	int part2(String input) {
-		return 0;
+	long part1(String input) {
+		final var lines = input.split("\n");
+		return Arrays.stream(lines).filter(this::isNice1).count();
+	}
+
+	boolean isNice2(String line) {
+		final var windows = new ArrayList<String>();
+		final var ll = line.length() - 1;
+
+		var hasPair = false;
+		for (var i = 0; i < ll; i++) {
+			// finallyy
+			final var w = windows.subList(0, Math.max(0, windows.size() - 1));
+
+			final var l = line.substring(i, i + 2);
+			if (w.contains(l)) {
+				hasPair = true;
+				break;
+			}
+			windows.add(l);
+		}
+
+		if (!hasPair)
+			return false;
+
+		for (var i = 0; i < ll - 1; i++)
+			if (line.charAt(i) == line.charAt(i + 2))
+				return true;
+
+		return false;
+	}
+
+	long part2(String input) {
+		final var lines = input.split("\n");
+		return Arrays.stream(lines).filter(this::isNice2).count();
 	}
 
 	void main() throws IOException {
