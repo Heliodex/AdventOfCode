@@ -31,7 +31,7 @@ public class day9 {
 		return result;
 	}
 
-	int part1(String input) {
+	ArrayList<Integer> totalDistances(String input) {
 		final var cities = new HashSet<String>();
 		final var distances = new HashMap<Set<String>, Integer>();
 		for (final var line : input.split("\n")) {
@@ -53,11 +53,17 @@ public class day9 {
 			// minDist = Math.min(minDist, totalDist);
 			totalDistances.add(totalDist);
 		}
-		return totalDistances.stream().min(Integer::compare).orElse(0);
+		return totalDistances;
+	}
+
+	int part1(String input) {
+		final var totals = totalDistances(input);
+		return totals.stream().min(Integer::compare).orElse(0);
 	}
 
 	int part2(String input) {
-		return 0;
+		final var totals = totalDistances(input);
+		return totals.stream().max(Integer::compare).orElse(0);
 	}
 
 	void main() throws IOException {
