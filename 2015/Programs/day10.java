@@ -8,7 +8,8 @@ public class day10 {
 	final String path = "./Inputs/10";
 
 	String iterate(final String input) {
-		var split = input.split("(?<=(.))(?!\\1)");
+		// split string whenever the character changes from the previous one
+		final var split = input.split("(?<=(.))(?!\\1)");
 		var result = new StringBuilder();
 		for (var s : split)
 			result.append(s.length()).append(s.charAt(0));
@@ -16,7 +17,6 @@ public class day10 {
 	}
 
 	int part1(final String input) {
-		// split string whenever the character changes from the previous one
 		var n = input;
 		for (var i = 0; i < 40; i++)
 			n = iterate(n);
@@ -24,7 +24,10 @@ public class day10 {
 	}
 
 	int part2(final String input) {
-		return 0;
+		var n = input;
+		for (var i = 0; i < 50; i++)
+			n = iterate(n);
+		return n.length();
 	}
 
 	void main() throws IOException {
