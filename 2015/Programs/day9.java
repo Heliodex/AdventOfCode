@@ -11,7 +11,7 @@ import java.util.Set;
 public class day9 {
 	final String path = "./Inputs/9";
 
-	HashSet<ArrayList<String>> getPermutations(HashSet<String> list) {
+	HashSet<ArrayList<String>> getPermutations(final HashSet<String> list) {
 		final var result = new HashSet<ArrayList<String>>();
 		if (list.size() == 0) {
 			result.add(new ArrayList<>());
@@ -31,7 +31,7 @@ public class day9 {
 		return result;
 	}
 
-	ArrayList<Integer> totalDistances(String input) {
+	ArrayList<Integer> totalDistances(final String input) {
 		final var cities = new HashSet<String>();
 		final var distances = new HashMap<Set<String>, Integer>();
 		for (final var line : input.split("\n")) {
@@ -56,12 +56,12 @@ public class day9 {
 		return totalDistances;
 	}
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var totals = totalDistances(input);
 		return totals.stream().min(Integer::compare).orElse(0);
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var totals = totalDistances(input);
 		return totals.stream().max(Integer::compare).orElse(0);
 	}

@@ -23,7 +23,7 @@ public class day10 {
 		return n.length();
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		return 0;
 	}
 

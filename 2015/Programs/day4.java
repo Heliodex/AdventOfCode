@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 public class day4 {
 	final String path = "./Inputs/4";
 
-	int find(String input, int zeros) throws NoSuchAlgorithmException {
+	int find(final String input, final int zeros) throws NoSuchAlgorithmException {
 		final var md = MessageDigest.getInstance("MD5");
 		for (var num = 0;; num++) {
 			md.update((input + num).getBytes());

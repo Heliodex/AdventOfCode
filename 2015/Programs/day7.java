@@ -15,11 +15,11 @@ class GateCache implements Gate {
 	final Gate g;
 	Integer out;
 
-	GateCache(Gate g) {
+	GateCache(final Gate g) {
 		this.g = g;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		if (out == null)
 			out = g.get(wires);
 		return out;
@@ -29,7 +29,7 @@ class GateCache implements Gate {
 class ConstGate implements Gate {
 	final int v;
 
-	ConstGate(int v) {
+	ConstGate(final int v) {
 		this.v = v;
 	}
 
@@ -41,11 +41,11 @@ class ConstGate implements Gate {
 class WireGate implements Gate {
 	final String a;
 
-	WireGate(String a) {
+	WireGate(final String a) {
 		this.a = a;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return wires.get(a).get(wires);
 	}
 }
@@ -53,12 +53,12 @@ class WireGate implements Gate {
 class AndGateSS implements Gate {
 	final String a, b;
 
-	AndGateSS(String a, String b) {
+	AndGateSS(final String a, final String b) {
 		this.a = a;
 		this.b = b;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return wires.get(a).get(wires) & wires.get(b).get(wires);
 	}
 }
@@ -67,12 +67,12 @@ class AndGateIS implements Gate {
 	final int a;
 	final String b;
 
-	AndGateIS(int a, String b) {
+	AndGateIS(final int a, final String b) {
 		this.a = a;
 		this.b = b;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return a & wires.get(b).get(wires);
 	}
 }
@@ -80,12 +80,12 @@ class AndGateIS implements Gate {
 class OrGate implements Gate {
 	final String a, b;
 
-	OrGate(String a, String b) {
+	OrGate(final String a, final String b) {
 		this.a = a;
 		this.b = b;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return wires.get(a).get(wires) | wires.get(b).get(wires);
 	}
 }
@@ -93,11 +93,11 @@ class OrGate implements Gate {
 class NotGate implements Gate {
 	final String a;
 
-	NotGate(String a) {
+	NotGate(final String a) {
 		this.a = a;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return ~wires.get(a).get(wires) & 0xFFFF;
 	}
 }
@@ -106,12 +106,12 @@ class LShiftGate implements Gate {
 	final String a;
 	final int v;
 
-	LShiftGate(String a, int v) {
+	LShiftGate(final String a, final int v) {
 		this.a = a;
 		this.v = v;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return (wires.get(a).get(wires) << v) & 0xFFFF;
 	}
 }
@@ -120,12 +120,12 @@ class RShiftGate implements Gate {
 	final String a;
 	final int v;
 
-	RShiftGate(String a, int v) {
+	RShiftGate(final String a, final int v) {
 		this.a = a;
 		this.v = v;
 	}
 
-	public int get(GateMap wires) {
+	public int get(final GateMap wires) {
 		return wires.get(a).get(wires) >> v;
 	}
 }
@@ -133,7 +133,7 @@ class RShiftGate implements Gate {
 public class day7 {
 	final String path = "./Inputs/7";
 
-	Gate parseGate(String expr) {
+	Gate parseGate(final String expr) {
 		final var parts = expr.split(" ");
 		final var a = parts[0];
 		switch (parts.length) {
@@ -166,7 +166,7 @@ public class day7 {
 		throw new RuntimeException("Failed to parse gate: " + expr);
 	}
 
-	GateMap newWires(String input) {
+	GateMap newWires(final String input) {
 		final var wires = new GateMap();
 		final var lines = input.split("\n");
 		for (final var line : lines) {
@@ -183,12 +183,12 @@ public class day7 {
 		return wires;
 	}
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var wires = newWires(input);
 		return wires.get("a").get(wires);
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var wires = newWires(input);
 		wires.put("b", new GateCache(new ConstGate(part1(input))));
 		return wires.get("a").get(wires);

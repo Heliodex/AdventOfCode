@@ -7,7 +7,7 @@ import java.nio.file.Files;
 public class day1 {
 	final String path = "./Inputs/1";
 
-	int part1(String input) {
+	int part1(final String input) {
 		var floor = 0;
 		for (final char c : input.toCharArray())
 			floor += switch (c) {
@@ -18,7 +18,7 @@ public class day1 {
 		return floor;
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		var floor = 0;
 		var i = 0;
 		for (; i < input.length(); i++) {

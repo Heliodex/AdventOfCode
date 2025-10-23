@@ -9,12 +9,12 @@ class pos {
 	int x = 0;
 	int y = 0;
 
-	pos(int x, int y) {
+	pos(final int x, final int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	pos move(char c) {
+	pos move(final char c) {
 		return switch (c) {
 			case '^' -> new pos(x, ++y);
 			case 'v' -> new pos(x, --y);
@@ -37,7 +37,7 @@ class pos {
 public class day3 {
 	final String path = "./Inputs/3";
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var chars = input.toCharArray();
 		final var pos1 = new pos(0, 0);
 		final var set = new HashSet<String>();
@@ -49,7 +49,7 @@ public class day3 {
 		return set.size();
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var chars = input.toCharArray();
 		final var poss = new pos[] { new pos(0, 0), new pos(0, 0) };
 		final var set = new HashSet<String>();

@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class day6 {
 	final String path = "./Inputs/6";
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var lights = new boolean[1000][1000];
 		final var lines = input.split("\n");
 
@@ -32,7 +32,7 @@ public class day6 {
 		return count;
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var lights = new int[1000][1000];
 		final var lines = input.split("\n");
 

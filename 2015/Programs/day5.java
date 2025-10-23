@@ -10,7 +10,7 @@ public class day5 {
 
 	final String path = "./Inputs/5";
 
-	boolean isNice1(String line) {
+	boolean isNice1(final String line) {
 		final String[] forbidden = { "ab", "cd", "pq", "xy" };
 		final var vowels = "aeiou";
 
@@ -33,12 +33,12 @@ public class day5 {
 		return true;
 	}
 
-	long part1(String input) {
+	long part1(final String input) {
 		final var lines = input.split("\n");
 		return Arrays.stream(lines).filter(this::isNice1).count();
 	}
 
-	boolean isNice2(String line) {
+	boolean isNice2(final String line) {
 		final var windows = new ArrayList<String>();
 		final var ll = line.length() - 1;
 

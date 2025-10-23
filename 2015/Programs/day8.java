@@ -7,7 +7,7 @@ import java.nio.file.Files;
 public class day8 {
 	final String path = "./Inputs/8";
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var lines = input.split("\n");
 		var count = 0;
 		for (final var line : lines) {
@@ -18,11 +18,10 @@ public class day8 {
 			var newLength = 0;
 			for (var i = 0; i < chars.length; i++) {
 				final var bs = chars[i] == '\\';
-				if (bs && chars[i + 1] == 'x') {
+				if (bs && chars[i + 1] == 'x')
 					i += 3;
-				} else if (bs && (chars[i + 1] == '\\' || chars[i + 1] == '\"')) {
+				else if (bs && (chars[i + 1] == '\\' || chars[i + 1] == '\"'))
 					i++;
-				}
 				newLength++;
 			}
 
@@ -31,7 +30,7 @@ public class day8 {
 		return count;
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var lines = input.split("\n");
 		var count = 0;
 		for (final var line : lines) {

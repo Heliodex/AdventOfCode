@@ -8,7 +8,7 @@ import java.util.List;
 public class day2 {
 	final String path = "./Inputs/2";
 
-	int part1(String input) {
+	int part1(final String input) {
 		final var lines = input.split("\n");
 		var total = 0;
 		for (var line : lines) {
@@ -24,7 +24,7 @@ public class day2 {
 		return total;
 	}
 
-	int part2(String input) {
+	int part2(final String input) {
 		final var lines = input.split("\n");
 		var total = 0;
 		for (var line : lines) {
