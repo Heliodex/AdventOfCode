@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
 
-class GateMap extends HashMap<String, Gate> {}
+class GateMap extends HashMap<String, Gate> {
+}
 
 interface Gate {
 	int get(GateMap wires);
@@ -130,7 +131,7 @@ class RShiftGate implements Gate {
 	}
 }
 
-public class day7 {
+class day7 {
 	final String path = "./Inputs/7";
 
 	Gate parseGate(final String expr) {

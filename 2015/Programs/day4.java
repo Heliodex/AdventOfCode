@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class day4 {
+class day4 {
 	final String path = "./Inputs/4";
 
 	int find(final String input, final int zeros) throws NoSuchAlgorithmException {

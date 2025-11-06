@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class day11 {
+class day11 {
 	final String path = "./Inputs/11";
 
 	String increment(final String input) {

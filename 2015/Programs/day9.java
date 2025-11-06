@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class day9 {
+class day9 {
 	final String path = "./Inputs/9";
 
 	HashSet<ArrayList<String>> getPermutations(final HashSet<String> list) {

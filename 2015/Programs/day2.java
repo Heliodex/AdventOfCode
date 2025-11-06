@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-public class day2 {
+class day2 {
 	final String path = "./Inputs/2";
 
 	int part1(final String input) {

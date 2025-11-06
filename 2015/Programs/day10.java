@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class day10 {
+class day10 {
 	final String path = "./Inputs/10";
 
 	String iterate(final String input) {

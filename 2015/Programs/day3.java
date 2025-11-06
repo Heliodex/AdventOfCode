@@ -34,7 +34,7 @@ class pos {
 	}
 }
 
-public class day3 {
+class day3 {
 	final String path = "./Inputs/3";
 
 	int part1(final String input) {

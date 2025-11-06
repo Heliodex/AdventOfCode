@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class day5 {
+class day5 {
 
 	final String path = "./Inputs/5";
 
